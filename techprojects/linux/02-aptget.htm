@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>Linux Project #2 - Installing and uninstalling software</h1>
+
+<p>in order to install software you need root access to the machine you're working on. If you're the one who installed your operating system, and you're running Mint or Ubuntu, all you need is your regular account password. If you're using Debian, Fedora, Slackware, or some other distro the process is slightly more complicated, and I'm not going to get into it here. If you're in this situation google "sudoers file."</p>
+<p>If you're unfamiliar with the way linux manages software packages in <a href="http://en.wikipedia.org/wiki/Software_repository">repositories</a>, or your distros particular <a href="http://en.wikipedia.org/wiki/Package_management_system">package management system</a>, you need to do some reading</p>
+
+<p>I'm using a Debian based Distro that uses apt-get, so that's what we're going to use here. to install a package with apt-get when you know the name of the package, all you have to do is type "sudo apt-get install [package name]". let's do that with a package that we'll need for a later project.</p>
+
+<pre>sudo apt-get install wget</pre>
+
+<p> after you type the above in a terminal, you should see lots of text scroll down the screen. When it stops, your program is installed.</p> 
+
+<div id="mcbottom">
+
+<a class="clean" href="01-bash.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to Linux Project #1 - Basic Bash Commands</div>
+</a>
+
+<a class="clean" href="03-tools.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to Linux Project #3 - Sed and wget</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

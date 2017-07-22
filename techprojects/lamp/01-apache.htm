@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>LAMP Server Administration Project #1 - Install and Configure Apache Web Server</h1>
+<p> In order to install software, again, you'll need root access. To install Apache in Debian based Distros, type:</p>
+<pre>
+sudo apt-get install apache2
+</pre>
+
+<p>This might take a while, but when it's done, you should be good to go with apache. We'll have to do a little tweaking, but for the most part it's already up and running. I'm going to do the rest of this tutorial assuming you're running Mint or Ubuntu or another very similar distro, so if you're running something else, be sure to check your documentation (really, you should be doing this anyway no matter what distro you're running). The first thing we can do is check to see if the server is running. run:</p>
+<pre>
+ps -e | grep apache
+</pre>
+<p>to see if you have a process running already. If not, try to start it with</p>
+<pre>
+sudo service apache2 start
+</pre>
+<p>When it's running, point your web browser to 127.0.0.1 and see what happens. If everything went well you should see a simple page that says "it works!". This file is "/var/www/index.html" by default. You can edit the file, or delete it and replace it with whatever you want. Anything you have in the directory /var/www/ (called "web root") will be accessible by typing your computer's IP address into the address bar in a web browser - of course unless you have changed your router's settings, it will only work on your own LAN, and everything is subject to the file permissions you set - if none of the files in the web root have read permissions you'll get an error 403 in a browser.<p>
+
+
+<p>If Apache is working, we'll need to make a few changes so that things we will do in later tutorials will work. Feel free to skip this and come back to it later if you run into an error condition or something, and as always before you do anything you should consult the documentation. The first thing we need to do is enable mod rewrite</p>
+<pre>sudo a2enmod rewrite</pre>
+<p>You may also need to change the line "AllowOverride None" to "AllowOverride All" under "Directory /var/www/" in the file /etc/apache2/sites-available/default"
+
+<div id="mcbottom">
+
+<a class="clean" href="../lampprojects.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to LAMP Server Administration Projects Index</div>
+</a>
+
+<a class="clean" href="02-webmin.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to LAMP Server Administration Project #2 - Install and configure Webmin</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

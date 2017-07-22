@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="dd.js"></script>
+
+<link rel='stylesheet' href='style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="index.htm">Home</a></li>
+    <li><a href="about.htm">About</a></li>
+    <li><a href="contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="linuxprojects.htm">Linux</a>
+	<a href="lampprojects.htm">LAMP Server Administration</a>        
+	<a href="networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>Linux Projects</h1>
+<br>
+<img class="center" src="images/tux.jpg" alt="Tux - The Linux Mascot"/>
+
+<p>If you've never used linux before, and you'd like to try it, you have a few options. The first is to install it on an old computer that you don't mind tinkering with. Another option is to install it to a <a href="http://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a> like <a href="https://www.virtualbox.org/">virtualbox</a> so that you don't have to acually run the risk of reinstalling the OS on any of your real hardware.</p>
+<p>Once you have decided where you would like to install Linux, you have to decide which <a href="http://en.wikipedia.org/wiki/Linux_distro">distribution</a> to go with. Unlike Microsoft Windows and Mac OS, Linux is open source, meaning that anyone with the skill and desire can modify, add to, personalize, and redistribute it. Because of this, there are lots of different flavors of Linux called "Distributions" or "Distros." You can find a pretty comprehensive list of the most popular Linux Distros at <a href="http://www.distrowatch.com">Distrowatch.com</a>.</p>
+<p> For someone who has never used Linux before, I would recommend something like <a href="http://linuxmint.com/">Linux Mint</a> or <a href="http://www.ubuntu.com/">Ubuntu</a></p>
+
+<br><br>
+
+<h3><a class="heading" href="linux/01-bash.htm">Linux Project #1 - Basic Bash Commands</a></h3>
+<p>This project is an introduction to working with the command line interface (CLI) in linux. The command line is the most basic way of telling the computer what to do (issuing commands). Being comfortable on the command line is a must for anyone who wants to get the most out of linux, though with the current crop of distributions like Mint and Ubuntu, it isn't strictly necessary anymore. There is a lot of debate in the Linux world over whether or not this is a good thing.</p><br>
+
+
+<h3><a class="heading" href="linux/02-aptget.htm">Linux Project #2 - Installing and Uninstalling Software on Debian Based Distributions</a></h3>
+<p>Under Windows, most people are used to going to the store, purchasing software, then coming home to install it with a CD or DVD. Linux works very differently when it comes to software. Because most software you will encounter in Linux is free or open source, you can simply take your pick of software and download it for free. There is no need to purchase or pirate bloated and restrictive proprietary software - everything you need is available for free.</p><br>
+
+
+<h3><a class="heading" href="linux/03-tools.htm">Linux Project #3 - Sed and wget</a></h3>
+<p> Since we're using the command line, let's take a look at some really useful command line tools which we'll use again in a later project.</p><br>
+
+<h3><a class="heading" href="linux/04-bashscript.htm">Linux Project #4 - Bash Scripting</a></h3>
+<br>
+<p>Once you know what you want to do on the command line, it's not that much more work to make it into a script. A script is series of commands that you could have entered individually on the command line, but instead saved in a single file that can be run like a program. Learning how to do this to automate basic tasks is a huge time saver.</p><br>
+ 
+
+<h3><a class="heading" href="linux/05-cron.htm">Linux Project #5 - Adding a Bash Script to Cron</a></h3>
+<p>If you have a script that you want to run on a regular basis, the best thing to do is to make it a "Cron Job" - Linux lingo that means add it to a list of scripts that run regularly with instructions on when to run it.</p><br>
+
+
+<div id="mcbottom">
+
+
+<a class="clean" href="projects.htm">
+<div id="mcbottomleftarrow"><img class="center" src="images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to Projects Index</div>
+</a>
+
+
+<a class="clean" href="linux/01-bash.htm">
+<div id="mcbottomrightarrow"><img class="center" src="images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to Linux Project #1 - Basic Bash Commands</div>
+</a>
+
+</div>
+
+
+</div>
+
+
+
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="dd.js"></script>
+
+<link rel='stylesheet' href='style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects - About</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="index.htm">Home</a></li>
+    <li><a href="about.htm">About</a></li>
+    <li><a href="contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="linuxprojects.htm">Linux</a>
+	<a href="lampprojects.htm">LAMP Server Administration</a>        
+	<a href="networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>About TechProjects</h1>
+
+<p>This page was written by Christopher Grimsley for Computer Science 191 (Web Development) at Allegany College of Maryland (spring 2012). The course used Adobe Dreamweaver, but this site was written entirely by hand.</p>
+
+<p>The projects on this page were written by Christopher Grimsley for the purpose of creating this site, including the code in the <a href="linux/04-bashscript.htm">Bash script</a>, <a href="lamp/04-python.htm">Python script</a>, and <a href="lamp/05-php.htm">PHP script</a> (with the exception of one instance in which I use code from the PHP manual, but this is explicitly stated on that page).</p>
+
+<p>This site looks best in Firefox 5 or later, but it has been tested in Chrome, Chromium, Opera, and Safari and was found to work. It does not render very well in Internet Explorer 9, but to be totally honest, if you're looking at this site in IE, you probably aren't interested in anything I have to say anyway.</p>
+
+<hr>
+
+<p>The arrow icons on project pages were created by <a href="http://www.designworkplan.com/signage-symbols/free-vector-arrows.htm">Sander Baumann</a> and are used under the Creative Commons Attribution 3.0 license.</p>
+
+<p>The Javascript drop-down navigation menu uses modified code based on original code from <a href="http://javascript-array.com/scripts/simple_drop_down_menu/">Javascript Array</a>
+</div>
+
+
+
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

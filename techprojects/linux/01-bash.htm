@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>Linux Project #1 - Basic Bash Commands</h1>
+<p>Fire up your Linux terminal emulator of choice and let's get started! If you're running Mint or Ubuntu you can do this in several ways - look through your applications menu until you see something called "Terminal." Alternatively you can just type Alt+f2 then enter "gnome-terminal"</p>
+<p>below we'll look at some of the basic commands you'll need to know to become a command line guru.</p>
+<br><br><br>
+
+<h3>pwd</h3>
+<p>When you have your terminal emulator running, all you'll see is a prompt that probably looks something like:</p>
+<pre>username@computer ~ $</pre>
+<p>If you hit enter, it'll just drop to a new line and say the same thing again. What you're looking at is an interface to issue commands to your computer directly. The first command you'll learn is "pwd" which means "print working directory." When you type pwd at this prompt, it will return the directory you're currently in.</p>
+<pre>username@computer ~ $ pwd
+/home/username
+username@computer ~ $
+</pre>
+<br>
+
+<h3>ls</h3>
+<p>You can't do much just sitting in a directory, so we're going to issue another command: "ls". This command lists the directory contents.</p>
+<pre>username@computer ~ $ ls
+Desktop Documents Downloads Music Pictures Public Templates Videos
+username@computer ~ $
+</pre>
+<p>your results may vary depending on what you've got in your home directory.</p>
+<br>
+
+<h3>mkdir</h3>
+<p>We're going to create a directory to work in for the rest of this project. Run the command "mkdir techprojects"</p>
+<pre>username@computer ~ $ mkdir techprojects
+username@computer ~ $
+</pre>
+<p> It looks like nothing happened, but when you run "ls" again, you see what changed.</p>
+<pre>username@computer ~ $ ls
+Desktop Documents Downloads Music Pictures Public techprojects Templates Videos
+username@computer ~ $
+</pre>
+<p>we now have a directory to work in. We're left with a problem though: we're not in the right directory.</p>
+<br>
+
+<h3>cd</h3>
+<p>The "cd" command allows you to change directories. We're going to cd into the techprojects directory we just created.</p>
+<pre>username@computer ~ $ cd techprojects
+username@computer ~/techprojects $
+</pre>
+<p> My prompt changed when I did that (see the "/techprojects" between the "~" and "$"?). Yours might not change, but if you want to check where you are, you can always run "pwd" again.
+<pre>username@computer ~/techprojects $ pwd
+/home/username/techprojects
+username@computer ~/techprojects $
+</pre>
+<p>Let's change back up to the directory we were just in for a moment. There are a few ways to do this, so we'll talk about them one by one. Since we're going up one directory we can type "cd .."
+
+<pre>username@computer ~/techprojects $ cd ..
+username@computer ~ $ pwd
+/home/username
+username@computer ~ $
+</pre>
+<p> the first time we switched to the techprojects directory, we were able to get away with just typing the name of the directory and not its full location, because it was in our working directory. You can't always do that. Go ahead and cd to the next highest directory by running "cd .." again, then try to cd into the techprojects directory by running "cd techprojects"</p>
+
+<pre>username@computer ~ $ cd ..
+username@computer /home $ pwd
+/home
+username@computer /home $ cd techprojects
+bash: cd: techprojects: No such file or directory
+username@computer /home $
+</pre>
+<p> we can't use the same shortcut since the techprojects directory isn't in our working directory any more. We have to specify what's called an "absolute path" to the directory we want. We want to go to "/home/username/techprojects" so that's what we'll tell cd:</p>
+
+<pre>
+username@computer /home $ cd /home/username/techprojects
+username@computer ~/techprojects $ pwd
+/home/username/techprojects
+username@computer ~/techprojects $
+</pre>
+
+<br>
+
+<h3>man</h3>
+<p>The user manual for linux is built right in. If at any time you forget what a command does, you can look up the manual for by typing "man" followed by the command you're looking for more information about. Try running "man ls" or "man pwd". When you're done looking at the manual, type "q" to quit.</p><br>
+
+<h3>clear</h3>
+<p>We've been running lots of commands, and our terminal window has a long history of everything we've just done. Sometimes this can be distracting, so you can get rid of all the old commands still in the terminal window by typing "clear"</p><br>
+
+<h3>date</h3>
+<p>There are some pretty useful functions built in to Linux. One is "date" which will print the current date and time. If you spend a few minutes reading the man page for date, you'll find that you can print more specific parts of the date by adding extra arguments. Try "date +%F" or "date +%r" as some examples.</p><br>
+
+<h3>cal</h3>
+<p>While we're on the subject of the date and time I should mention that Linux has a built in calendar. Too see it type "cal"</p>
+
+<h3>echo</h3>
+<p>You can make the terminal say anything you want by typing "echo" followed by whatever you want it to say.</p>
+
+<pre>username@computer ~/techprojects $ echo "hello world"
+hello world
+username@computer ~/techprojects $
+</pre>
+
+
+<h3>variables</h3>
+<p>Just like in algebra, sometimes we need to use variables on the command line. You can assign variables just by using the equals sign like so: "x=5". make sure you dont leave any space between your variable, the equals sign, and the value. You can combine variables with echo to print the value of any assigned variable.</p>
+<pre>username@computer ~/techprojects $ x=5
+username@computer ~/techprojects $ echo $x
+5
+username@computer ~/techprojects $
+</pre>
+
+<p> Note that when calling a variable (unlike assigning it) you must preface it with "$". If you'd like to, you can make the output of a command a variable.</p>
+<pre>username@computer ~/techprojects $ today=$(date +%F)
+username@computer ~/techprojects $ echo $today
+2012-03-04
+username@computer ~/techprojects $
+</pre>
+<p>When I assigned the output of the date command to the variable "today" in the above command I had to format it appropriately so that Bash would know that I mean the output of the command rather than the words themselves. You can either do it the way I did it above, or enclose the command in backticks the key to the left of "1"</p>
+<pre>username@computer ~/techprojects $ now=`date +%r`
+username@computer ~/techprojects $ echo $now
+11:02:38 AM
+username@computer ~/techprojects $
+</pre>
+<br>
+
+<h3>Redirecting Output with ">", ">>", and "|"</h3>
+<p>If you want to take the output of a command and save it to a file, you can just type "[command] > filename"</p>
+
+<pre>username@computer ~/techprojects $ date > today.txt
+username@computer ~/techprojects $ ls
+today.txt
+username@computer ~/techprojects $
+</pre>
+
+<p>Using ">" will overwrite the contents of any file you redirect the output to, so be careful. You can use ">>" to add to the end of a file that already exists rather than overwriting it.</p>
+
+<pre>username@computer ~/techprojects $ echo "Fred" > bedrock.txt
+username@computer ~/techprojects $ echo "Wilma" >> bedrock.txt
+username@computer ~/techprojects $ echo "Dino" >> bedrock.txt
+username@computer ~/techprojects $
+</pre>
+
+<p> If you need to send the output of one command or program into another command or program instead of a file, you can use a pipe "|" (shares a key with "\"). We'll come back to this later.</p>
+
+<br>
+
+<h3>cat</h3>
+<p>cat prints the contents of a file. We can use it to check that what we just did actually worked.</p>
+
+<pre>username@computer ~/techprojects $ cat today.txt
+Sun Mar  4 11:15:47 EST 2012
+username@computer ~/techprojects $ cat bedrock.txt
+Fred
+Wilma
+Dino
+username@computer ~/techprojects $
+</pre>
+<br>
+<h3>grep</h3>
+<p>grep searches for a user specified string in a user specified location like a file or the output of a command</p>
+
+<pre>username@computer ~/techprojects $ grep Betty bedrock.txt
+username@computer ~/techprojects $ 
+</pre>
+
+<p>This command returns nothing because "Betty" is not in the file bedrock.txt</p>
+
+<pre>username@computer ~/techprojects $ grep Wilma bedrock.txt
+Wilma
+username@computer ~/techprojects $ 
+</pre>
+
+<p>This command returns "Wilma" because "Wilma" is in the file bedrock.txt. grep is also used very frequently in conjunction with pipes. we can pipe the output of the command date to Grep to search it for a specific string.</p>
+
+<pre>username@computer ~/techprojects $ date | grep Sun
+<b>Sun</b> Mar  4 11:43:03 EST 2012
+username@computer ~/techprojects $ 
+</pre>
+
+<p>"Sun" is bold, and in my terminal it is also red. Grep then prints the rest of the line where it found the search term. You might think that this isn't very useful since it's very easy to find the search string manually with the output of the date command. This is true, but when looking for something within much larger output it can be very useful. look at the amount of output of the command: "ps -e". This is a list of every process currently running on your machine. You could run "ps -e | grep firefox" to see if firefox is running. 
+
+<br>
+
+<h3>cp</h3>
+<p>cp copies a file.</p><br>
+
+<pre>username@computer ~/techprojects $ cp bedrock.txt fredshouse.txt
+username@computer ~/techprojects $ ls
+bedrock.txt  fredshouse.txt  today.txt
+username@computer ~/techprojects $ 
+</pre>
+<br>
+<h3>rm</h3>
+<p>rm removes (deletes) a file.</p><br>
+
+<pre>username@computer ~/techprojects $ rm bedrock.txt
+username@computer ~/techprojects $ ls
+fredshouse.txt  today.txt
+username@computer ~/techprojects $ 
+</pre>
+<br>
+<h3>mv</h3>
+<p>mv moves a file to a new location or it changes its name. It's the same as using cp to create a new file then rm to remove the old one.</p>
+
+<pre>username@computer ~/techprojects $ mv today.txt yesterday.txt
+username@computer ~/techprojects $ ls
+fredshouse.txt  yesterday.txt
+username@computer ~/techprojects $ 
+</pre>
+
+<br>
+
+<h3>exit</h3>
+<p>when you're ready to close your terminal you can type "exit"</p><br>
+
+
+
+<div id="mcbottom">
+
+<a class="clean" href="../linuxprojects.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to Linux Projects Index</div>
+</a>
+
+<a class="clean" href="02-aptget.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to Linux Project #2 - Installing and uninstalling software</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

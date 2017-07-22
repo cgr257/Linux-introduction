@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>LAMP Server Administration Project #2 - Install and configure Webmin</h1>
+<p> Up until now we've spent a lot of time on the command line, but sometimes it's nice to have a GUI. Webmin provides a sleek, intuitive web interface for completing basic and advanced administration tasks. If you think you'd rather do things in hard-core mode, feel free to skip this project. You can get webmin at <a href="http://www.webmin.com">www.webmin.com</a>. It's not in the repositories for Ubuntu or Linux Mint AFAIK, but the webmin development team has gone through the trouble of posting a .deb for us, so we won't have to go too far out of the way to get this done. Go ahead and download that deb, then cd to the directory it's in and run</p>
+<pre>sudo dpkg -i webmin.version.whatever.deb</pre>
+<p> of course you're going to want to substitute the correct filename. It'll go through an install process, and when it's done it'll spit out some information about how to access the web interface. Usually it's "your-ip:10000" or "localhost:10000" or "127.0.0.1:10000" or something like that. You'll be presented with a login screen - login and you'll be presented with an information page that shows you a little bit about the maching you're running. Be careful about what you do here - keep in mind, this is a UI for system administration, so you shouldn't modify anything unless you know what you're doing. Feel free to look around though, you won't mess anything up unless you cange it first.</p>
+<p>Click on "Servers" in the menu on the left. It should expand to show that you're running Apache Webserver. Click on that to see settings associated with your Apache install.</p>
+<p>If you expand the system menu, then click "scheduled cron jobs" you can see what's going on in cron. Also in the system menu you can click "running processes" to see a list of every process currently running. This is the same as typing "ps -e" in a terminal window, but the output is much easier to look through with this UI. Webmin is capable of doing most system administration tasks, and you can consult the webmin docs for a full list of what and how. A <a href="../network/03-squid.htm">later project</a> will involve running a squid proxy, and having webmin installed will help out a lot.</p> 
+
+<div id="mcbottom">
+
+<a class="clean" href="01-apache.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to LAMP Server Administration Project #1 - Install and Configure Apache Web Server</div>
+</a>
+
+<a class="clean" href="03-phpmyadmin.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to LAMP Server Administration Project #3 - Install and Configure PHPMyAdmin</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="dd.js"></script>
+
+<link rel='stylesheet' href='style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="index.htm">Home</a></li>
+    <li><a href="about.htm">About</a></li>
+    <li><a href="contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="linuxprojects.htm">Linux</a>
+	<a href="lampprojects.htm">LAMP Server Administration</a>        
+	<a href="networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+
+
+<h1>Network Projects</h1>
+<br>
+<img class="center" src="images/UcARHe.jpg" alt="Cat-5 Cable"/>
+
+<p></p>
+<p></p>
+
+<br><br>
+
+<h3><a class="heading" href="network/01-ddwrt.htm">Network Project #1 - Installing Custom Router Firmware</a></h3>
+<p>You probably have a router connected to your modem that you use to share your internet connection with multiple computers. Most store-bought routers are capable of a lot more than they deliver - many companies build several versions of their firmware that they put on more or less identical hardware, only to sell the more "advanced" models for far more money. We've learned about the importance of running free software in the Linux project section, but now we'll discover that we can run the firmware of our choice on many routers, vastly increasing the functionality while at the same time spending no money.</p><br>
+
+<h3><a class="heading" href="network/02-webcams.htm">Network Project #2 - Re-purpose Old webcams as Live-Streaming Security Cameras</a></h3>
+<p>If you're like me, you've got a box of old hardware sitting around somewhere. I can't bring myself to throw out old keyboards, cables, webcams, or whatever else, so I've got a spare parts box in my basement that I make frequent use of when completing new projects. One way to easily use some of that old hardware is to attach an old webcam to a network connected computer, and stream the output over your LAN. I have a webcam mounted just outside of my office window pointed at my front door. When someone comes to the door, I can check to see who it is before going to answer it. This is Tony Montana level security for almost no cost.</p><br>
+
+<h3><a class="heading" href="network/03-squid.htm">Network Project #3 - Use Squid Proxy to Filter Out Unwanted Content from your Network</a></h3>
+<p>If you've been paying close attention to the way the Internet has been changing recently, you may have found yourself upset over the extent to which targeted ads and behavior tracking have invaded seemingly innocuous content. Nearly every page you visit has a facebook like button, and believe it or not, the like button exists (at least in part) as a method of <a href="http://rt.com/news/richard-stallman-free-software-875/">tracking you </a> across the internet. Hundreds of companies have suddenly cropped up to serve the rapidly expanding market of targeted advertising. If you are interested, you can see who is tracking you by installing a firefox addon called <a href="http://www.mozilla.org/en-US/collusion/">Collusion</a>. I don't care if it's for advertising or any other reason, I don't want to be tracked, so I run all of my internet traffic through a filter that removes known trackers, servers that host nothing but ads, phishing sites, and other undesireable web content. This project will explain how to install and configure Squid web proxy.</p><br>
+
+
+<div id="mcbottom">
+
+
+<a class="clean" href="lamp/05-php.htm">
+<div id="mcbottomleftarrow"><img class="center" src="images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to LAMP Project #5 - PHP</div>
+</a>
+
+
+<a class="clean" href="network/01-ddwrt.htm">
+<div id="mcbottomrightarrow"><img class="center" src="images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to Network Project #1 - Installing Custom Router Firmware</div>
+</a>
+
+</div>
+
+</div>
+
+
+
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,248 @@
+html,
+body
+{
+background-color:white;
+height:100%;
+width:100%;
+margin:0px;
+}
+
+a.header:link { text-decoration: none; color:black; font-family: 'Monofett', cursive; font-size:60px;}
+a.header:active { text-decoration: none; color:black; font-family: 'Monofett', cursive; font-size:60px;}
+a.header:visited { text-decoration: none; color:black; font-family: 'Monofett', cursive; font-size:60px;}
+
+a.heading:link {text-decoration: none; color:black;} 
+a.heading:active {text-decoration: none; color:black;}
+a.heading:visited {text-decoration: none; color:black;}
+
+a.clean:link {text-decoration: none; color:black;} 
+a.clean:active {text-decoration: none; color:black;}
+a.clean:visited {text-decoration: none; color:black;}
+
+img.center{ display:block; margin-left:auto; margin-right:auto; }
+
+h1
+{
+font-family: 'Concert One', cursive;
+text-align:center;
+line-height:130%;
+}
+
+h3
+{
+font-family: 'Concert One', cursive;
+line-height:130%;
+}
+
+p
+{
+font-family: 'Josefin Sans', sans-serif;
+font-size:20px;
+}
+
+#header
+{
+width:auto;
+height:100px;
+margin:auto;
+border:0px;
+text-align:left;
+background-color:#0033CC;
+color: white;
+text-transform:lowercase;
+}
+
+#headercontent
+{
+margin:auto;
+padding:5px;
+width:1000px;
+}
+
+#headerleft{
+float:left;
+font-family: 'Monofett', cursive; 
+font-size:60px;
+}
+
+#headerright{
+float:right;
+padding-top:10px;
+padding-bottom:10px;
+font-size:12px;
+line-height:30%;
+}
+
+#headernav
+{
+width:auto;
+height:27px;
+margin:auto;
+border:0px;
+text-align:left;
+background-color:green;
+color: white;
+text-transform:lowercase;
+}
+
+#headernavcontent
+{
+margin:auto;
+width:1000px;
+}
+
+#content
+{
+margin:15px auto;
+margin-top:80px;
+min-height:600px;
+padding:10px;
+height:auto;
+width:1000px;
+overflow:auto;
+}
+
+.morecontent
+{
+background-color:#D4DBBF;
+width:955px;
+min-height:500px;
+margin-left:5px;
+margin-right:5px;
+margin-top:15px;
+margin-bottom:15px;
+border:2px solid black;
+color:black;
+padding-left:15px;
+padding-right:15px;
+overflow:auto;
+}
+
+#mcbottom
+{
+font-family: 'Yanone Kaffeesatz', sans-serif;
+font-size:1.2em;
+margin-top:100px;
+margin-bottom:25px;
+background-color:#D4DBBF;
+width:100%;
+min-height:70px;
+padding-bottom:10px;
+}
+
+#mcbottomleftarrow
+{
+float:left;
+background-color:#D4DBBF;
+width:100px;
+height:50px;
+}
+
+#mcbottomleftdescription
+{
+float:left;
+background-color:#D4DBBF;
+width:200px;
+min-height:60px;
+padding-bottom:5px;
+}
+
+#mcbottomrightarrow
+{
+float:right;
+background-color:#D4DBBF;
+width:100px;
+height:50px;
+}
+
+#mcbottomrightdescription
+{
+float:right;
+text-align:right;
+background-color:#D4DBBF;
+width:200px;
+min-height:60px;
+padding-bottom:5px;
+}
+
+
+
+#footer
+{
+width:90%;
+font-size:16px;
+margin:auto;
+margin-top:15px;
+height:80px;
+color:#3B5998;
+font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+#footertop
+{
+height:35px;
+border-bottom:1px solid #B3B3B3;
+}
+
+#footerbottom
+{
+height:35px;
+}
+
+#sddm
+{	margin: 0;
+	padding: 0;
+	z-index: 30}
+
+#sddm li
+{	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font-family: 'Yanone Kaffeesatz', sans-serif; font-size:1.4em;
+	}
+
+#sddm li a
+{	display: block;
+	margin: 0 1px 0 0;
+	padding: 0px 10px;
+	width: 100px;
+	
+	background: #006600;
+	color: #FFF;
+	text-align: center;
+	text-decoration: none}
+
+#sddm li a:hover
+{	background: #66A366}
+
+#sddm div
+{	position: absolute;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+	background: #D4DBBF;
+	border: 1px solid #5970B2
+	}
+
+	#sddm div a
+	{	position: relative;
+		display: block;
+		margin: 0;
+		padding: 5px 10px;
+		width: auto;
+		white-space: nowrap;
+		text-align: left;
+		text-decoration: none;
+		background: #EAEBD8;
+		color: #000000;
+		font: 11px arial
+		}
+
+	#sddm div a:hover
+	{	background: #66A366;
+		color: #FFF}
+
+
+
+

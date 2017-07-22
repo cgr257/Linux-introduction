@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>Linux Project #5 - Adding a Bash Script to Cron</h1>
+
+<p>The last project created a script, but in order to get the daily opinion page urls, we would still have to run the script manually every day. While this is way better than running each command individually every day, it's still not quite what we're looking for. The last step is to make the script a "cron job" i.e. add it to a list of scripts to run regularly. If you haven't done so already, go ahead and read the man page for crontab. Once you have an idea of what crontab is, go ahead and run</p>
+
+<pre>"crontab -l"</pre>
+
+<p> if you have anything in your crontab already you'll see it here. You can also see that when adding scripts, it is done in the following format:</p>
+
+<pre>
+*    *    *    *    *   /path/to/script
+T    T    T    T    T
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    `----- day of week (0 - 6) (0 is Sunday, or use names)
+|    |    |    `---------- month (1 - 12)
+|    |    `---------------- day of month (1 - 31)
+|    `-------------------- hour (0 - 23)
+`------------------------- min (0 - 59)
+</pre>
+
+<br>
+<p>some examples:</p>
+<br>
+
+<pre>
+
+Run at 11AM Monday - Friday:
+0 11 * * 1-5 /some/script
+
+Run at 5:30PM on the 15th of the month, every month:
+30 17 15 * * /another/script
+
+Run every day at 4AM:
+0 4 * * * /yet/another/script
+
+
+</pre>
+
+<p> The script we wrote in the last project should be run daily, as the newspaper updates its page daily. We should put it somewhere like /home/$(whoami)/bin/ so that we know its important (and if you want to you can add that directory to your path). Let's edit crontab.</p>
+
+<pre>crontab -e</pre>
+
+<p>add the following to the end of the file:</p>
+
+<pre>0 4 * * * /home/[your-user-name]/bin/opinionget.sh</pre>
+
+<p> If later you want to remove it, run "crontab -e" again and delete or comment out the line you just added. That's it. Every day you can look in the folder "getopinion" in your home directory to see a list of URLs to opinion articles from the Cumberland Times News... Get ready to rage.</p>
+<p>Later we'll take this data and turn it into something a little more useful.</p>
+
+<div id="mcbottom">
+
+<a class="clean" href="04-bashscript.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to Linux Project #4 - Bash Scripting</div>
+</a>
+
+<a class="clean" href="../lampprojects.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to LAMP Projects Index Page</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

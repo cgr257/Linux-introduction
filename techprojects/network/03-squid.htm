@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>Network Project #3 - Use Squid Proxy to Filter Out Unwanted Content from your Network</h1>
+<p>Squid is a caching proxy which can be used to speed up your browsing, or filter out sites, IPs, or even certain types of content based on rules called access control lists (ACLs). Start by apt-getting squid. We'll have to edit the configuration file, but before we do, we should back it up. The conf file is "/etc/squid/squid.conf"</p>
+<pre>Sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.bak
+sudo gedit /etc/squid/squid.conf</pre>
+
+<p>By default all traffic is denied ("http_access deny all").edit the file to add your local network by adding these lines</p>
+<pre>
+acl intranet 192.168.1.0/24
+http_access allow intranet
+</pre>
+<p>Make sure that the line "http_access allow intranet" is above the line that says "http_access deny all". You can change the port that squid runs on by changing "http_port" but it isn't necessary. The default is 3128.</p>
+<p>When you start squid for the first time, you need to create the swap directories. Do that with the -z argument.</p>
+<pre>sudo squid -z</pre>
+<p>When that's done, start squid normally</p>
+<pre>sudo service squid start</pre>
+<p>To configure your browser to use squid, you'll need to change its network settings. In firefox that's in preferences -> Network -> settings. Change http, https, and ftp proxy to the ip address of your squid server on port 3128. If you make this change in your browser, and everything still works - you're using squid successfully.</p>
+<p>The next step is to create some ACLs to filter unwanted websites from our network. Run</p>
+<pre>sudo nano /etc/squid/block.acl</pre>
+<p>to open a text editor to create a file that will contain a list of blocked sites. Enter into this file the following:</p>
+<pre>.facebook.com
+.facebook.net
+.fbcdn.net
+</pre>
+
+<p>Save the file, then open squid.conf again. In the acl section add the following</p>
+<pre>
+acl blocksites dstdom_regex "/etc/squid/block.acl"
+</pre>
+<p> Now scroll down in the squid.conf file, and above "http_access allow intranet" at the very top of the list of "http_access" rules, add the following line:</p>
+<pre>
+http_access deny blocksites
+</pre> 
+<p>Every site in the list "/etc/squid/block.acl" will be blocked after restarting squid</p>
+<pre>
+sudo service squid restart
+</pre>
+<p> open the browser you configured to work with squid previously and try to open www.facebook.com. You should see a page saying that access is denied. There are lots of rules available in squid - you can block certain sites for certain computers at certain times of the day. You could redirect traffic from one site to another, you can stop users from looking at videos, or hundreds of other types of things. Take a look at the squid docs to learn more about it. If you installed webmin in LAMP Server Administration <a href="../lamp/02-webmin.htm">Project #2</a> then you can use webmin to manage squid. You don't have to open squid.conf if it's intimidating - go ahead and create your ACL's with webmin instead (to be clear, you should still learn to do it via the .conf file). To look at squid in webmin, select "Servers" from the left menu, then click "squid". If it isn't there you should be able to find it by searching for "squid" in the search box. </p>
+
+<div id="mcbottom">
+
+<a class="clean" href="02-webcams.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to Network Project #2 - Re-purpose Old webcams as Live-Streaming Security Cameras</div>
+</a>
+
+<a class="clean" href="../projects.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">Back to Projects Index</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

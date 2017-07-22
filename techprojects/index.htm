@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="dd.js"></script>
+
+<link rel='stylesheet' href='style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="index.htm">Home</a></li>
+    <li><a href="about.htm">About</a></li>
+    <li><a href="contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="linuxprojects.htm">Linux</a>
+	<a href="lampprojects.htm">LAMP Server Administration</a>        
+	<a href="networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>Welcome to TechProjects!</h1>
+<p>This site is for people with a do-it-yourself attitude and some extra time and hardware. If you have an old computer laying around, don't let it go to waste! There are plenty of projects you can do to re-purpose old hardware that are simultaneously, fun, educational and practical.</p>
+
+<p>Learning a little bit about how computers work will take you a long way. We live in an increasingly technology reliant world, and I find it disappointing that so many people spend so much time using devices that they don't fully understand. So often we just want the newest and best tech toys, but we frequently fail to recognize that computers are tools, and when we use them, we generally have a specific purpose in mind - it is always a good idea to have a better understanding of how to accomplish your goals, and goals that we aim to achieve through the use of technology are no exception.</p>
+
+<p> If you have ever been curious about how something works; if you've ever wondered what lies at the heart of the technology you use every day; if you've ever thought to yourself: "I bet I could make something that does that!" then you are the kind of person that needs a project! Look around, see if you can find some ideas for a place to start your own project. Keep in mind, I made this site for a school assignment, so it isn't the best source of information if you have a genuine desire to learn (I tried to include links to relevant resources where possible) but what I have posted here comes from my own unique experience with technology based projects, and it is therefore new information that someone could potentially benefit from. Hopefully you can find something here that leads you down a road you might not have otherwise traveled.</p>
+<p>Alright! let's get started on some new <a href="projects.htm">projects!</a>
+</div>
+
+
+
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

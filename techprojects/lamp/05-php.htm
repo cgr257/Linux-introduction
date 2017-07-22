@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>LAMP Server Administration Project #5 - PHP</h1>
+
+<p>PHP provides a quick and easy way of viewing the data we just added to the table. All you have to do to run a PHP script is put a file ending in .php on a webserver and navigate to it in a web browser. Make sure PHP is installed before you continue. You can type "php --version" in a terminal to see if it's there, and if not, apt-get it. The script we'll create here will be relatively simple. Keep in mind that this is just a starting point - If you want to really make this shine, you'll have to add some html and css, and even extend the use of php a little bit.</p>
+
+<p>The first thing to do in our PHP script is declare a bunch of variables which we'll use later to connect to the database.</p>
+<pre>
+&#60;?php
+
+$username="opinionpage";
+$password="YOUR-PASSWORD-HERE";
+$database="opinionpage";
+$date=date('Y-m-d');
+
+?&#62;
+</pre>
+
+<p>Next we'll connect to the database</p>
+
+<pre>
+&#60;?php
+
+mysql_connect('localhost',$username,$password)
+    or die('Could not connect: ' . mysql_error());
+mysql_select_db($database) or die('Could not select database');
+
+?&#62;
+</pre>
+
+<p>The above is straight out of the <a href="http://us.php.net/manual/en/function.mysql-connect.php">PHP Manual</a> so I'm not going to get into it.</p>
+
+<pre>
+&#60;?php
+
+$current=mysql_query('SELECT * FROM opinionpage WHERE date = "'.$date.'"');
+$row = mysql_fetch_array($current);
+$urlsarray = explode("\n", $row['urls']);
+
+?&#62;
+</pre>
+
+<p>Let's break this down line by line.
+<br>Line 1: Create the variable $current from the output of a mysql query (the part in parentheses). The MySql query asks for everything (*) in the row from the opinionpage table (opinionpage) where the date column (date) is the same as the evaluated output of the variable $date, which is equal to "date('Y-m-d')", which prints the current date as yyyy-mm-dd. In other words, it asks for the row of data created today.
+<br><br>Line 2: Create the variable $row which is an array created from the row of data selected in the previous line. We'll be able to manipulate this array as any other, but it is associative, using the column names as keys. We can, for example, ask for the data in the date column with $row['date'] or the index column with the variable $row['index'].
+<br><br> The last line of the above block uses the $row array created in the second line. When we call $row['urls'] we get the same thing as the entire text file created with the bash script. Having the data presented in this way isn't particularly useful, so we need to be able to grab distinct values from it somehow. To solve this problem, we create a new array $urlsarray by using explode to separate elements in $row['urls'] based on where a new line occurs, such that every individual line of text originally in the text file we created with bash (which was then moved into MySQL) will become a distinct value in the new array. Because each url occupies its own line, we now have an array where each url is a different value. We can call the first url with $urlsarray[0] or the second with $urlsarray[1] and so on. If we wanted to know how many elements are in the array, we could use $count(), though because of the way we'll use this data, it doesn't matter how many elements there are. We'll use a foreach loop, so however many urls there are is how many times we'll work with them.</p>
+
+<pre>
+&#60;?php
+
+foreach ($urlsarray as $url){
+	
+	$locs = str_replace("http://times-news.com/opinion", "", $url);
+	$pattern='#(.*)/x(.*?)/#is';
+	$replacement="";
+	$titled=preg_replace($pattern, $replacement, $locs);
+	$title = str_replace("-", " ", $titled);
+	echo "&#60;a href='".$url."'&#62;".$title."&#60;/a&#62;&#60;br&#62;";
+	}
+
+?&#62;
+</pre>
+
+<p> we then run a foreach loop, doing some string operations on each item in the array (removing everything but the filename from the url, then removing the dashes from between each word in the filename and replacing them with spaces.) Then we take both the cleaned up filename, and the raw url, and format them appropriately as a link in the form: "&#60a href='url'&#62;title&#60;/a&#62;&#60;br&#62;". This same operation is done on every url in the row. Again, let's look at this line by line.</p>
+
+<pre>foreach ($urlsarray as $url){</pre>
+<p>foreach will go through the array $urlsarray and process each element as its own variable: $url. everything that happens in the loop happens once for each element. Instead of writing code that brings up element 1, does something to it, saves it as a new variable and moves on to element 2, foreach will automate that, making less work and way less code.</p>
+
+<pre>$locs = str_replace("http://times-news.com/opinion", "", $url);</pre>
+<p>This line looks for the text "http://times-news.com/opinion" and then replaces it with nothing. If you wanted to, you could use str_replace to substitute some other text, but we just want to get rid of it, so after the comma we have quotes with nothing in them, then the object we want to perform the operation on: in this case $url, which is the current iteration in the for each loop.</p>
+
+<pre>
+$pattern='#(.*)/x(.*?)/#is';
+$replacement="";
+$titled=preg_replace($pattern, $replacement, $locs);
+</pre>
+
+<p> $pattern establishes a <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expression</a> that will be used by preg_replace. $replacement is what the text that matches the regular expression will be replaced with, in this case nothing. Finally we put that into preg_replace.
+</p>
+
+<pre>
+$title = str_replace("-", " ", $titled);
+</pre>
+
+<p>The $title variable takes everything that was done before (which has left us with something like: "this-is-the-letter-title") and removes the dashes and replaces them with spaces.</p>
+
+<pre>echo "&#60;a href='".$url."'&#62;".$title."&#60;/a&#62;&#60;br&#62;";</pre>
+
+<p>finally we echo both the full url as well as the cleaned up title within html link tags so that we have a link to the letter in question with the correct title. Because of the foreach loop this is done on every url in the array.</p>
+
+<p>All that's left is to package this up in a nice .php file, throw it on the webserver, and we're done.</p>
+
+<pre>
+&#60;html&#62;
+&#60;head&#62;
+&#60;title&#62;
+Opinion RAGE!!!!!
+&#60;/title&#62;
+&#60;/head&#62;
+&#60;body&#62;
+
+&#60;?php
+
+//declare variables for connecting to db
+$username="opinionpage";
+$password="YOUR-PASSWORD-HERE";
+$database="opinionpage";
+$date=date('Y-m-d');
+
+
+//connect to db
+mysql_connect('localhost',$username,$password)
+    or die('Could not connect: ' . mysql_error());
+mysql_select_db($database) or die('Could not select database');
+
+
+//get row from db for today
+//create array from row
+//explode urls column into its own array
+$current=mysql_query('SELECT * FROM opinionpage WHERE date = "'.$date.'"');
+$row = mysql_fetch_array($current);
+$urlsarray = explode("\n", $row['urls']);
+
+
+//format and print the urls
+foreach ($urlsarray as $url){
+	
+	$locs = str_replace("http://times-news.com/opinion", "", $url);
+	$pattern='#(.*)/x(.*?)/#is';
+	$replacement="";
+	$titled=preg_replace($pattern, $replacement, $locs);
+	$title = str_replace("-", " ", $titled);
+	echo "&#60;a href='".$url."'&#62;".$title."&#60;/a&#62;&#60;br&#62;";
+	}
+
+
+?&#62;
+
+&#60;/body&#62;
+&#60;/html&#62;
+</pre>
+
+<p>Every day when you look at that same page, it will change automatically to display a list of links that reflects the current letters to the editor as posted on the Cumberland Times-News webpage. This setup leaves open the possibility of looking at links for previous day's letters as well, all you'd have to do is add an html form that specifies the date and uses that user input instead of the current date. Since the urls are being added to a database automatically each day, the data is always there at your disposal. It's up to you to figure out what you want to do with it.</p>
+
+
+
+<div id="mcbottom">
+
+<a class="clean" href="04-python.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to LAMP Server Administration Project #4 - Python</div>
+</a>
+
+<a class="clean" href="../networkprojects.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to Network Projects</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

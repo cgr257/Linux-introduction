@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+
+
+<h1>Network Project #2 - Re-purpose Old webcams as Live-Streaming Security Cameras</h1>
+<br>
+<p>This project will use mjpgstreamer and zone minder in conjunction with an existing webserver in order to stream output of webcams to a local webpage.</p>
+
+<p>The first step is to get mjpgstreamer</p>
+
+<pre>wget http://sourceforge.net/projects/mjpg-streamer/files/mjpg-streamer_r94-1_i386.deb</pre>
+
+<p>because this is an older project, and the debian rules for version numbers are being enforced differently, you can't just install that package with "dpkg -i" - you'll have to repackage it first. Debian used to allow alphanumeric version numbers like this package contains, but now if you try to install it, you'll get an error, so we have to change the version number before installing the package. Extract the filesystem tree to a directory "packagename.x.x.x":</p>
+
+<pre>dpkg-deb -x packagename.x.x.x.deb packagename.x.x.x</pre>
+
+<p>Extract the control file information and cd into the directory:</p>
+
+<pre>
+dpkg-deb -e packagename.x.x.x.deb packagename.x.x.x/DEBIAN
+cd packagename.x.x.x/DEBIAN
+</pre>
+
+<p>Edit the file called "control" and change the desired version number for the dependency that you want to change. Once that's done, rebuild the deb package:</p>
+
+<pre>dpkg-deb -b packagename.x.x.x packagename.x.x.x.deb</pre>
+
+<p>now use "dpkg -i" to install the modified package. When it's installed you can start your camera with mjpg streamer. You'll need to know where in /dev/ your camera is. It's probably /dev/video0 or /dev/video1, but you should unplug the camera, plug it back in, then run dmesg to see where it gets assigned so you know for sure. You can start your camera stream by running something like the following:</p>
+
+<pre>sudo mjpg_streamer -i "input_uvc.so -d /dev/video0/" -o "output_http.so -w /var/www -p 8099"</pre>
+
+<p>Where /dev/video0/ is changed to the appropriate address for your camera, and -p 8099 is set to whatever port you want to stream to. Now navigate your browser to "http://127.0.0.1:8099/?action=stream" to see the raw video stream.</p>
+
+<p>If you want to take this to the next level, install <a href="http://www.zoneminder.com/">Zone Minder</a> and add your network stream as a camera in Zone Minder.</p> 
+
+
+
+
+<div id="mcbottom">
+
+<a class="clean" href="01-ddwrt.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to Network Project #1 - Installing Custom Router Firmware</div>
+</a>
+
+<a class="clean" href="03-squid.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to Network Project #3 - Use Squid Proxy to Filter Out Unwanted Content</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

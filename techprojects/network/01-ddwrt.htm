@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>Network Project #1 - Installing Custom Router Firmware</h1>
+<p>You probably didn't know that you could swap out the firmware on your router to unlock its true potential. I'm sure the router manufacturers like it that way - you'll have to spend more to get more functionality. Of course it doesn't have to be that way.</p>
+
+<h3>On Hacking</h3>
+<p>Hardware is hardware, and if you own it, you should have the right to make it do whatever you want. This is what hacking is all about. We've seen this recently with the spread of smart phones that are essentially locked down into a state of reduced functionality, forcing users to install only proprietary software distributed only through channels approved by the manufacturer (and subject to it's censorship). Needless to say, this is not the best model for free use of software, or for free speech, or even for accomplishing every day tasks with the technology in question. What it is, is a business model - and it has worked well for those on top. I'd like to use my hardware to accomplish my own goals rather than for the benefit of whoever is selling it. When I see that something I own has more potential - I'll modify it so that it lives up to that potential. When most people hear the word "hacking" they think of identity thieves and people who write viruses, but I (and many <a href="http://2600hacker.stores.yahoo.net/subscriptions.html">others</a>) think that hacking means taking control of your own hardware (or more broadly - of your own life) by asking questions about how things work, by making changes to things that you think aren't working the way you want them to</p>
+<h3>Hacking your Router with Custom Firmware</h3>
+<p>There are several current projects offering custom firmware for routers: <a href="http://www.dd-wrt.com/site/index">dd-wrt</a>, <a href="http://www.polarcloud.com/tomato">Tomato</a>, and <a href="https://openwrt.org/">OpenWrt</a>. You'll want to look at each page to see what hardware is supported by each project, then choose a project based on the features you're looking for. Because the range of hardware available is so wide, and the versions of the custom firmware varies so much, I'm not going to spend time with a walkthrough on how to install this firmware on any particular type of hardware (especially since it's already been done by each of these projects themselves), but I would like to give you a sense of the benefits of installing custom firmware.</p>
+
+<p>The first reason is that when you're running free or open source firmware, you have control over it. When it comes to routing, you want as much control as you can get. I recently had the opportunity to look at the <a href="http://www.actiontec.com/products/product.php?pid=185">Actiontec GT701C</a> and I was shocked to find that not only does the default firmware log <i>every</i> website any networked computer looks at, but it also provides the owner of the hardware with no method of deleting the log, or stopping it from tracking your activity. Why would anyone want that? Well, I can think of some reasons why some people might want it, but not the end users - this heavy handed method of taking control from the owner of the hardware does not benefit the consumer, it benefits the manufacturer, and possibly the ISP or the government, who both maintain logs on internet activity and may have an interest in decentralized logging as a backup to the ones they already keep. If you're running this hardware and would like to learn how to disable the logs, check out this <a href="http://blog.kgrothoff.org/2006/08/12/how-to-disable-the-actiontec-dsl-modem-web-activity-log/">blog post</a></p>
+
+<p>Another reason you may want to run custom router firmware is the fine grain control over your routing that it provides. Most of these projects allow users to directly enter iptables rules, but they also provide a user interface for configuring things more easily. One example of something that you can do is create a vlan, then write rules to keep that vlan completely separate from the rest of your network, so you could have a wireless connection for your family that gives access to local resources, and one for guests that only allows access to the internet. This kind of control is worth having if you frequently get into technology related projects.</p>
+
+<div id="mcbottom">
+
+<a class="clean" href="../networkprojects.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to Network Projects Index</div>
+</a>
+
+<a class="clean" href="02-webcams.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to Network Project #2 - Re-purpose Old webcams as Live-Streaming Security Cameras</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

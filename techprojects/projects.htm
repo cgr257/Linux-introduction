@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="dd.js"></script>
+
+<link rel='stylesheet' href='style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="index.htm">Home</a></li>
+    <li><a href="about.htm">About</a></li>
+    <li><a href="contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="linuxprojects.htm">Linux</a>
+	<a href="lampprojects.htm">LAMP Server Administration</a>        
+	<a href="networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>Projects</h1>
+<p>There are several categories of projects on this site. All are things that I have spent some time learning, but I am no expert in any of it. This is meant to be a way to get some ideas of things to do on your own. I encourage you to look things up on your own, experiment, and do whatever works best for you, but above all: RTFM and don't do anything to your computer or run any code if you don't know what it'll do. You are responsible for your own actions.</p>
+<br><br>
+<h3><a class="heading" href="linuxprojects.htm">Linux Projects</a></h3>
+<p>Many of the projects here make use of <a href="http://en.wikipedia.org/wiki/Free_and_open_source_software">Free/Libre/Open Source Software</a> (FLOSS). Being able to use a <a href="http://en.wikipedia.org/wiki/Gnu/linux">GNU/Linux distribution</a> makes these sorts of projects much easier. A big reason that it's good to use GNU/Linux is becuause it's free in two ways- free as in "free speech" (libre) and free as in "free beer" (gratis). Both of these things are good for a do-it-yourselfer. If you're looking into starting a project that you're not very confident about, it would be difficult to put down a few hundred dollars on software - that's why it's great to have an operating system that comes at no monetary cost. If you want to do something that contributes to your own personal or professional growth, I think its best to stick to something that was created with the free sharing of information in mind - that's why it's great to have an operating system that comes with no heavy handed licensing requirements and that allows you to modify it at will.</p>
+<br>
+
+<h3><a class="heading" href="lampprojects.htm">LAMP projects</a></h3>
+<p>In this section we will look at very basic uses for a common server <a href="http://en.wikipedia.org/wiki/Solution_stack">solution stack</a> that uses Linux, Apache, MySQL, Python and PHP (<a href="http://en.wikipedia.org/wiki/LAMP_server">LAMP servers</a>).</p><br>
+
+<h3><a class="heading" href="networkprojects.htm">Networking Projects</a></h3>
+<p>Most people have a home network (LAN), but few people use it to its full potential. Here we'll discuss several projects you can do on your own network that will help you to realize the true potential of your networked computers.</p>
+<br>
+
+<div id="mcbottom">
+
+
+<div id="mcbottomleftarrow"></div>
+<div id="mcbottomleftdescription"></div>
+
+
+<a class="clean" href="linuxprojects.htm">
+<div id="mcbottomrightarrow"><img class="center" src="images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to Linux Projects</div>
+</a>
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="../dd.js"></script>
+
+<link rel='stylesheet' href='../style.css'/>
+<link href='http://fonts.googleapis.com/css?family=Monofett|Josefin+Sans:400,300|Yanone+Kaffeesatz:400,200|Concert+One' rel='stylesheet' type='text/css'>
+<title>TechProjects</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<div id="headercontent">
+			<div id="headerleft"><a class="header" href="index.htm">TechProjects</a></div>
+		</div>	
+	</div>
+
+	<div id="headernav">
+		<div id="headernavcontent">
+			
+			<!--
+			The way that I would prefer to do this is to call an external file via PHP
+			so that I don't have to rewrite this once for each page.
+
+			<?php
+			$headernavcontent=file_get_contents('nav.html'); 
+			echo $headernavcontent
+			?>
+
+			-->
+
+
+
+<!-- begin navigation menu -->
+
+<ul id="sddm">
+    <li><a href="../index.htm">Home</a></li>
+    <li><a href="../about.htm">About</a></li>
+    <li><a href="../contact.htm" 
+        onmouseover="mopen('m3')" 
+        onmouseout="mclosetime()">Contact</a>
+        <div id="m3" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../contact.htm">General Contact Information</a>
+        <a href="http://www.hirechrisg.com" target="_blank">Online Portfolio</a>
+        </div></li>
+    <li><a href="../projects.htm" 
+        onmouseover="mopen('m4')" 
+        onmouseout="mclosetime()">Projects</a>
+        <div id="m4" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+        <a href="../linuxprojects.htm">Linux</a>        
+	<a href="../lampprojects.htm">LAMP Server Administration</a>
+	<a href="../networkprojects.htm">Networking</a>
+        </div></li>
+       
+</ul>
+<div style="clear:both"></div>
+
+
+<!-- end navigation menu -->
+
+
+
+
+			
+
+		</div>
+	</div>
+
+	
+	<div id="content">
+
+		
+
+<div class="morecontent">
+<h1>Linux Project #3 - Sed and Wget</h1>
+<p>This project uses two popular and powerful Linux programs, sed and wget. Wget downloads files (and much more) from the internet, and provides lots of options for how to get them. Sed (<b>s</b>tream <b>ed</b>itor) looks at text passed to it and modifies it based on user spefified rules. It's a good idea to read the man pages for both programs before starting.</p>
+
+<h3>wget</h3>
+<p>let's start with a very basic use for wget: downloading a single file. You can download the html page you're looking at right now by running:</p>
+<pre>wget http://coldfusion.allegany.edu/smith191/grimsley/linux/03-tools.htm</pre>
+<p>as you can see, all that is required is the location of a file passed as an argument and wget will download the specified file to the working directory. Alternatively, if you had several files you wanted to download, you could add them to the file wgeturls.txt then type:</p>
+<pre>wget -i wgeturls.txt</pre>
+<p>There are a lot of other cools things you can do with wget, like the -k and -r arguments (read the man page), but we're going to use it in a pretty simple way today, so we don't need to get into all that. On to sed!
+
+<h3>sed</h3>
+<p>sed is an old program (it was written in the early 70's for Unix) but it's still one of the most useful utilities you can find in Linux and other Unix-like operating systems. Sed can do some pretty cool stuff, like replace every instance of a certain word in a file:</p>
+
+<pre>
+username@computer ~/techprojects $ echo "You want a toe? I can get you a toe." > dude.txt
+username@computer ~/techprojects $ cat dude.txt
+You want a toe? I can get you a toe.
+username@computer ~/techprojects $ sed -e 's/toe/cat/g' dude.txt > reddit.txt
+username@computer ~/techprojects $ cat reddit.txt
+You want a cat? I can get you a cat.
+</pre>
+
+<p>You can also print everything between two words:</p>
+
+<pre>
+username@computer ~/techprojects $ echo -e "Dude \nMaude \nWalter \nDonny \nStranger" > big.txt
+username@computer ~/techprojects $ cat big.txt
+Dude 
+Maude 
+Walter 
+Donny 
+Stranger
+username@computer ~/techprojects $ sed -n '/Maude/,/Donny/p' big.txt
+Maude 
+Walter 
+Donny
+username@computer ~/techprojects $
+</pre>
+
+<h3>The Project</h3>
+<p>What I'd like to do is combine wget and sed to download the opinion page from my local newspaper, strip away all the excess code from the HTML file, and print a list of urls that link to the current letters to the editor hosted on the newspaper's website. The first thing to do is download the opinion page html file with wget. cd to a directory you'd like to work in and then run this command:<p>
+
+<pre>wget http://times-news.com/opinion/index.html</pre>
+
+<p>If you cat that file, you'll see that it's mostly excess html sitting around very few lines that we actually want. What we need to do is find something in the file that indicates the beginning and end of the section we're interested in, and luckily this is easy to do with html. The links we want are in a div called "headline_list" so we're going to use sed to print just the lines between where that div starts, and its end tag. The div starts with '&#60;dl id="headline_list"&#62;' and ends with '&#60;/dl&#62;'. Since "/" is a delimiter, we'll have to escape it with "\"</p>
+
+<pre>
+sed -n '/&#60;dl id="headline_list"&#62;/,/&#60;\/dl&#62;/p' index.html &#62; $(date +%F).opinionsection.html
+</pre>
+
+<p>This will create a new file named [yyyy-mm-dd].opinionsection.html which contains only the part of the file we are interested in, but it's still a lot of HTML, and it's way more than just links to articles. We'll use grep to find just the links. We do this by grepping for "&#60;a href=" in the file we created in the last command, which will print all lines that start with that tag, then we redirect the output to a new file.</p>
+
+<pre>
+grep '&#60;a href=' $(date +%F).opinionsection.html &#62; $(date +%F).opinionlinks.html
+</pre>
+
+<p>Next we'll get rid of whatever html is still embedded in the links and leave behind the URLs only</p>
+<pre>
+sed -i -r 's/.*&#60;a href=\"(.*)\".*/\1/' $(date +%F).opinionlinks.html
+</pre>
+
+<p>because of the way this newspaper formats the opinion page the first url repeats itself, so we should remove that line. We'll take care of this by removing any duplicate lines with "uniq"</p>
+
+<pre>
+uniq $(date +%F).opinionlinks.html &#62; $(date +%F).opinionlinks.temp.html
+mv $(date +%F).opinionlinks.temp.html $(date +%F).opinionlinks.html
+</pre>
+
+<p>There's a similar problem with the last line (it points to a second page with more headlines, which we're not interested in at all) so we'll take that off too.</p>
+
+<pre>
+sed -i -e '$d' $(date +%F).opinionlinks.html
+</pre>
+
+<p>finally we'll clean up a little bit, and since the file we were working on no longer contains links or any html, we'll rename it to something appropriate.
+
+<pre>
+rm index.html
+rm $(date +%F).opinionsection.html
+mv $(date +%F).opinionlinks.html $(date +%F).opinionurls.txt
+</pre>
+
+<p>We're left with just one file named [yyyy-mm-dd].opinionurls.txt and it contains exactly what we were looking for.&#60;/project&#62;</p>
+
+<div id="mcbottom">
+
+<a class="clean" href="02-aptget.htm">
+<div id="mcbottomleftarrow"><img class="center" src="../images/arrowleft.png"/></div>
+<div id="mcbottomleftdescription">Back to Linux Project #2 - Installing and uninstalling software</div>
+</a>
+
+<a class="clean" href="04-bashscript.htm">
+<div id="mcbottomrightarrow"><img class="center" src="../images/arrowright.png"/></div>
+<div id="mcbottomrightdescription">On to Linux Project #4 - Bash Scripting</div>
+</a>
+
+</div>
+
+
+
+
+
+</div>
+
+	</div>
+
+
+	
+
+	<div id="footer">
+		<div id=footertop><p>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    			<img style="border:0;width:88px;height:31px"
+        		src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+			alt="Valid CSS!" /><br>
+			</a>
+		</p></div>
+		<div id=footerbottom>
+			<br>Techprojects &#169; 2012
+		</div>
+	</div>
+
+
+</body>
+
+</html>
